@@ -16,18 +16,25 @@ public class WSCalculator {
         return "Hello " + txt + " !";
     }
     
+    @WebMethod(operationName = "suma")
     public double suma(@WebParam(name = "num1") int num1, @WebParam(name = "num2") int num2) {
         return new Sum().operation(num1, num2);
     }
     
+    
+    @WebMethod(operationName = "resta")
     public double resta(@WebParam(name = "num1") int num1, @WebParam(name = "num2") int num2) {
         return new Sub().operation(num1, num2);
     }
     
+    
+    @WebMethod(operationName = "division")
     public double division(@WebParam(name = "num1") int num1, @WebParam(name = "num2") int num2) {
         return new Div().operation(num1, num2);
     }
     
+    
+    @WebMethod(operationName = "multiplicacion")
     public double multiplicacion(@WebParam(name = "num1") int num1, @WebParam(name = "num2") int num2) {
         return new Mul().operation(num1, num2);
     }
