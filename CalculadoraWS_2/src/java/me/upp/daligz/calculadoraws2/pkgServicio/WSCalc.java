@@ -8,6 +8,9 @@ package me.upp.daligz.calculadoraws2.pkgServicio;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import me.upp.daligz.calculadoraws2.pkgFuncionalidad.Calculadora;
+import me.upp.daligz.calculadoraws2.pkgFuncionalidad.Mul;
+import me.upp.daligz.calculadoraws2.pkgFuncionalidad.Sum;
 
 /**
  *
@@ -28,9 +31,9 @@ public class WSCalc {
      * Web service operation
      */
     @WebMethod(operationName = "suma")
-    public Double suma(@WebParam(name = "num1") final int num1, @WebParam(name = "num2") final String num2) {
+    public Double suma(@WebParam(name = "num1") final int num1, @WebParam(name = "num2") final int num2) {
         //TODO write your implementation code here:
-        return null;
+        return new Sum().calcular(num1, num2);
     }
 
     /**
@@ -39,6 +42,6 @@ public class WSCalc {
     @WebMethod(operationName = "multiplicar")
     public Double multiplicar(@WebParam(name = "num1") final int num1, @WebParam(name = "num2") final int num2) {
         //TODO write your implementation code here:
-        return null;
+        return new Mul().calcular(num1, num2);
     }
 }
