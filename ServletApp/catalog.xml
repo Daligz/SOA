@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/CalculadoraWS_2/WSCalc?WSDL" uri="src/conf/xml-resources/web-service-references/WSCalc/wsdl/localhost_8080/CalculadoraWS_2/WSCalc.wsdl"/>
+    <system systemId="http://localhost:8080/CalculadoraWS_2/WSCalc?xsd=1" uri="src/conf/xml-resources/web-service-references/WSCalc/wsdl/localhost_8080/CalculadoraWS_2/WSCalc.xsd_1.xsd"/>
+</catalog>
