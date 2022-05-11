@@ -12,12 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import me.upp.daligz.calculadoraws2.pkgservicio.WSCalc;
+import me.upp.daligz.calculadoraws2.pkgservicio.WSCalc_Service;
 
 /**
  *
  * @author Dali
  */
-@WebServlet(name = "ServletApp", urlPatterns = {"/ServletApp"})
+@WebServlet(name = "ServletApp", urlPatterns = {"/calculadora"})
 public class ServletApp extends HttpServlet {
 
     /**
@@ -35,14 +37,25 @@ public class ServletApp extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletApp</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletApp at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            final String operacion = request.getParameter("operacion");
+            final int num1 = Integer.valueOf(request.getParameter("num1"));
+            final int num2 = Integer.valueOf(request.getParameter("num2"));
+            double result = 0d;
+            final WSCalc wsc = new WSCalc_Service().getWSCalcPort();
+                    
+            if (operacion.equalsIgnoreCase("suma")) {
+                result = wsc.suma(num1, num2);
+            } else if (operacion.equalsIgnoreCase("multiplicacion")) {
+                result = wsc.multiplicar(num1, num2);
+            }
+            
+            out.println("Operacion: " + operacion);
+            out.print("<br / >");
+            out.println("Num1: " + num1);
+            out.print("<br / >");
+            out.println("Num2: " + num2);
+            out.print("<br / >");
+            out.println("Resultado: " + result);
         }
     }
 
