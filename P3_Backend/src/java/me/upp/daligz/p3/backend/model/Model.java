@@ -1,8 +1,10 @@
 package me.upp.daligz.p3.backend.model;
 
 import me.upp.daligz.p3.backend.model.commons.User;
+import me.upp.daligz.p3.backend.model.tables.TblUsers;
 import me.upp.daligz.p3.backend.modelo.SimpleSourceBuilder;
 import net.royalmind.library.lightquery.HikariPool;
+import net.royalmind.library.lightquery.queries.LInsert;
 
 public class Model implements IData<User> {
 
@@ -16,7 +18,11 @@ public class Model implements IData<User> {
 
     @Override
     public void create(final String name, final String user, final String password) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        final String query = new LInsert()
+                .table(TblUsers.TBL_NAME.getValue())
+                .values(null, name, user, password)
+                .getQuery();
+        HIKARI_POOL.execute(conn -> conn.prepareStatement(query).execute());
     }
 
     @Override
