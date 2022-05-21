@@ -1,5 +1,6 @@
 package me.upp.daligz.p3.backend.model;
 
+import com.google.gson.Gson;
 import java.util.concurrent.atomic.AtomicReference;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -7,11 +8,29 @@ import javax.jws.WebParam;
 
 @WebService(serviceName = "WSDatabase")
 public class WSDatabase {
+    
+    private final Gson gson = new Gson();
 
     @WebMethod(operationName = "create")
     public String hello(@WebParam(name = "name") String name, @WebParam(name = "user") String user,
             @WebParam(name = "password") String password) {
         Model.getInstance().create(name, user, password);
         return "OK!";
+    }
+    
+    // This is a bad implementation but I can't find another way and I'm lazy.
+    @WebMethod(operationName = "read")
+    public String hello(@WebParam(name = "id") String id) {
+        final AtomicReference<String> atomicResponse = new AtomicReference<>();
+        Model.getInstance().read(id).whenCompleteAsync((user, throwable) -> {
+            if (throwable != null) {
+                atomicResponse.set(throwable.getMessage());
+                return;
+            }
+            atomicResponse.set(this.gson.toJson(user));
+        });
+        
+        // Keep alive
+        while(true) if (!(atomicResponse.get().isEmpty())) return atomicResponse.get();
     }
 }
