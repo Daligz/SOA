@@ -15,22 +15,22 @@ public class Model implements IData<User> {
     );
 
     @Override
-    public void create(String name, String user, String password) {
+    public void create(final String name, final String user, final String password) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public User read(String id) {
+    public User read(final String id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void update(String value, String valueToUpdate) {
+    public void update(final String value, final String valueToUpdate) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(final String id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
