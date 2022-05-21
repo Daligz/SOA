@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/P3_Backend/WSDatabase?WSDL" uri="src/conf/xml-resources/web-service-references/WSDatabase/wsdl/localhost_8080/P3_Backend/WSDatabase.wsdl"/>
+    <system systemId="http://localhost:8080/P3_Backend/WSDatabase?xsd=1" uri="src/conf/xml-resources/web-service-references/WSDatabase/wsdl/localhost_8080/P3_Backend/WSDatabase.xsd_1.xsd"/>
+</catalog>
