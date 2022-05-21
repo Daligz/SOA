@@ -8,6 +8,7 @@ import me.upp.daligz.p3.backend.modelo.SimpleSourceBuilder;
 import net.royalmind.library.lightquery.HikariPool;
 import net.royalmind.library.lightquery.queries.LInsert;
 import net.royalmind.library.lightquery.queries.LSelect;
+import net.royalmind.library.lightquery.queries.LUpdate;
 
 public class Model implements IData<User> {
 
@@ -54,8 +55,13 @@ public class Model implements IData<User> {
     }
 
     @Override
-    public void update(final String value, final String valueToUpdate) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void update(final String id, final String value, final String valueToUpdate) {
+        final String query = new LUpdate()
+                .table(TblUsers.TBL_NAME.getValue())
+                .update(value, valueToUpdate)
+                .where(TblUsers.ID.getValue(), "=", id)
+                .getQuery();
+        HIKARI_POOL.execute(conn -> conn.prepareStatement(query).execute());
     }
 
     @Override
