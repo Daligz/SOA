@@ -6,7 +6,7 @@ import net.royalmind.library.lightquery.queries.LInsert;
 public class Model {
 
     private static final HikariPool HIKARI_POOL = new HikariPool(
-            new SourceBuilder()
+            new SimpleSourceBuilder()
                     .setUlr("jdbc:mysql://localhost:3306/bddatos?useSSL=false")
                     .setUser("root")
                     .setPassword("")
@@ -14,7 +14,10 @@ public class Model {
     );
     
     public static void main(final String args[]) {
-        final String query = new LInsert().table("tbusuarios").values(null, "Jhon", "usuarioJhon", 1234).getQuery();
+        final String query = new LInsert()
+                .table("tbusuarios")
+                .values(null, "Jhon", "usuarioJhon", 1234)
+                .getQuery();
         HIKARI_POOL.execute(conn -> conn.prepareStatement(query).execute());
     }
 }
