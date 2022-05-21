@@ -6,6 +6,7 @@ import me.upp.daligz.p3.backend.model.commons.User;
 import me.upp.daligz.p3.backend.model.tables.TblUsers;
 import me.upp.daligz.p3.backend.modelo.SimpleSourceBuilder;
 import net.royalmind.library.lightquery.HikariPool;
+import net.royalmind.library.lightquery.queries.LDelete;
 import net.royalmind.library.lightquery.queries.LInsert;
 import net.royalmind.library.lightquery.queries.LSelect;
 import net.royalmind.library.lightquery.queries.LUpdate;
@@ -66,6 +67,10 @@ public class Model implements IData<User> {
 
     @Override
     public void delete(final String id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        final String query = new LDelete()
+                .from(TblUsers.NAME.getValue())
+                .where(TblUsers.ID.getValue(), "=", id)
+                .getQuery();
+        HIKARI_POOL.execute(conn -> conn.prepareStatement(query).execute());
     }
 }
