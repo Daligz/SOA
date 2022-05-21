@@ -34,11 +34,16 @@ public class WSDatabase {
         while(true) if (!(atomicResponse.get().isEmpty())) return atomicResponse.get();
     }
     
-    
     @WebMethod(operationName = "update")
     public String update(@WebParam(name = "id") String id, @WebParam(name = "value") String value,
             @WebParam(name = "valueToUpdate") String valueToUpdate) {
         Model.getInstance().update(id, value, valueToUpdate);
+        return "OK!";
+    }
+    
+    @WebMethod(operationName = "delete")
+    public String delete(@WebParam(name = "id") String id) {
+        Model.getInstance().delete(id);
         return "OK!";
     }
 }
