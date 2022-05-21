@@ -20,6 +20,15 @@ public class Model implements IData<User> {
                     .setPassword("")
                     .build()
     );
+    
+    private static Model instance;
+
+    private Model() { }
+
+    public static Model getInstance() {
+        if (instance == null) instance = new Model();
+        return instance;
+    }
 
     @Override
     public void create(final String name, final String user, final String password) {
