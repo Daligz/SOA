@@ -10,10 +10,6 @@
                     <file>${file.reference.LightQuery-1.0.1-with-all-dependencies.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library dirs="200">
-                    <file>${file.reference.LightQuery-1.0.2-with-all-dependencies.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>
