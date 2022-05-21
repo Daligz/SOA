@@ -1,5 +1,6 @@
 package me.upp.daligz.p3.backend.model;
 
+import com.zaxxer.hikari.HikariConfig;
 import java.sql.ResultSet;
 import java.util.concurrent.CompletableFuture;
 import me.upp.daligz.p3.backend.model.commons.User;
@@ -13,17 +14,19 @@ import net.royalmind.library.lightquery.queries.LUpdate;
 
 public class Model implements IData<User> {
 
-    private static final HikariPool HIKARI_POOL = new HikariPool(
-            new SimpleSourceBuilder()
-                    .setUlr("jdbc:mysql://localhost:3306/bddatos?useSSL=false")
-                    .setUser("root")
-                    .setPassword("")
-                    .build()
-    );
+    private static HikariPool HIKARI_POOL;
     
     private static Model instance;
 
-    private Model() { }
+    private Model() {
+        final HikariConfig hc = new SimpleSourceBuilder()
+                .setUlr("jdbc:mysql://localhost:3306/bddatos?useSSL=false")
+                .setUser("root")
+                .setPassword("")
+                .build();
+        hc.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        HIKARI_POOL = new HikariPool(hc);
+    }
 
     public static Model getInstance() {
         if (instance == null) instance = new Model();
@@ -31,7 +34,7 @@ public class Model implements IData<User> {
     }
 
     @Override
-    public void create(final String name, final String user, final String password) {
+    public void create(final String name, final String user, final int password) {
         final String query = new LInsert()
                 .table(TblUsers.TBL_NAME.getValue())
                 .values(null, name, user, password)
@@ -40,7 +43,7 @@ public class Model implements IData<User> {
     }
 
     @Override
-    public CompletableFuture<User> read(final String id) {
+    public CompletableFuture<User> read(final int id) {
         final String query = new LSelect()
                 .from(TblUsers.TBL_NAME.getValue())
                 .value("*")
@@ -65,7 +68,7 @@ public class Model implements IData<User> {
     }
 
     @Override
-    public void update(final String id, final String value, final String valueToUpdate) {
+    public void update(final int id, final String value, final String valueToUpdate) {
         final String query = new LUpdate()
                 .table(TblUsers.TBL_NAME.getValue())
                 .update(value, valueToUpdate)
@@ -75,9 +78,9 @@ public class Model implements IData<User> {
     }
 
     @Override
-    public void delete(final String id) {
+    public void delete(final int id) {
         final String query = new LDelete()
-                .from(TblUsers.NAME.getValue())
+                .from(TblUsers.TBL_NAME.getValue())
                 .where(TblUsers.ID.getValue(), "=", id)
                 .getQuery();
         HIKARI_POOL.execute(conn -> conn.prepareStatement(query).execute());
