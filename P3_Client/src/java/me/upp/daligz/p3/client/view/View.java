@@ -136,8 +136,6 @@ public class View extends javax.swing.JFrame {
         return txtUser;
     }
     
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;

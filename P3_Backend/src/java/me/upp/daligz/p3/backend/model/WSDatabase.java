@@ -12,7 +12,7 @@ public class WSDatabase {
     private final Gson gson = new Gson();
 
     @WebMethod(operationName = "create")
-    public String create(@WebParam(name = "name") String name, @WebParam(name = "user") String user,
+    public String create(@WebParam(name = "name") final String name, @WebParam(name = "user") final String user,
             @WebParam(name = "password") int password) {
         Model.getInstance().create(name, user, password);
         return "OK!";
@@ -20,7 +20,7 @@ public class WSDatabase {
     
     // This is a bad implementation but I can't find another way and I'm lazy.
     @WebMethod(operationName = "read")
-    public String read(@WebParam(name = "id") int id) {
+    public String read(@WebParam(name = "id") final int id) {
         final AtomicReference<String> atomicResponse = new AtomicReference<>();
         Model.getInstance().read(id).whenCompleteAsync((user, throwable) -> {
             if (throwable != null) {
@@ -35,14 +35,14 @@ public class WSDatabase {
     }
     
     @WebMethod(operationName = "update")
-    public String update(@WebParam(name = "id") int id, @WebParam(name = "value") String value,
+    public String update(@WebParam(name = "id") final int id, @WebParam(name = "value") final String value,
             @WebParam(name = "valueToUpdate") String valueToUpdate) {
         Model.getInstance().update(id, value, valueToUpdate);
         return "OK!";
     }
     
     @WebMethod(operationName = "delete")
-    public String delete(@WebParam(name = "id") int id) {
+    public String delete(@WebParam(name = "id") final int id) {
         Model.getInstance().delete(id);
         return "OK!";
     }
