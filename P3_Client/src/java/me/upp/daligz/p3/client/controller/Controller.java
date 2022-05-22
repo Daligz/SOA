@@ -60,9 +60,8 @@ public class Controller {
                 this.alert("Error", "No puedes dejar campos vacios!", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            int id;
             try {
-                id = Integer.valueOf(JOptionPane.showInputDialog("Ingrese el id del usuario"));
+                final int id = Integer.valueOf(JOptionPane.showInputDialog("Ingrese el id del usuario"));
                 this.model.update(id, TblUsers.NAME.getValue(), this.view.getTxtName().getText());
                 this.model.update(id, TblUsers.USER.getValue(), this.view.getTxtUser().getText());
                 // Need change model data type :(
