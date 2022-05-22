@@ -2,6 +2,7 @@ package me.upp.daligz.p3.client.controller;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import me.upp.daligz.p3.backend.model.tables.TblUsers;
 import me.upp.daligz.p3.client.model.Model;
 import me.upp.daligz.p3.client.model.commons.User;
 import me.upp.daligz.p3.client.view.View;
@@ -20,6 +21,7 @@ public class Controller {
     private void registerActions() {
         this.create();
         this.read();
+        this.update();
     }
     
     private void create() {
@@ -49,6 +51,23 @@ public class Controller {
             } catch (NumberFormatException ignored) {
                 this.alert("Error", "Usuario no valido!", JOptionPane.ERROR_MESSAGE);
             }
+        });
+    }
+    
+    private void update() {
+        this.view.getBtnUpdate().addActionListener((e) -> {
+            if (isEmpty(this.view.getTxtName(), this.view.getTxtPassword(), this.view.getTxtUser())) {
+                this.alert("Error", "No puedes dejar campos vacios!", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int id;
+            try {
+                id = Integer.valueOf(JOptionPane.showInputDialog("Ingrese el id del usuario"));
+                this.model.update(id, TblUsers.NAME.getValue(), this.view.getTxtName().getText());
+                this.model.update(id, TblUsers.USER.getValue(), this.view.getTxtUser().getText());
+                // Need change model data type :(
+//                this.model.update(id, TblUsers.PASSWORD.getValue(), Integer.valueOf(this.view.getTxtPassword().getText()));
+            } catch (Exception ignored) { }
         });
     }
     
