@@ -66,8 +66,7 @@ public class Controller {
                 final int id = Integer.valueOf(JOptionPane.showInputDialog("Ingrese el id del usuario"));
                 this.model.update(id, TblUsers.NAME.getValue(), this.view.getTxtName().getText());
                 this.model.update(id, TblUsers.USER.getValue(), this.view.getTxtUser().getText());
-                // Need change model data type :(
-//                this.model.update(id, TblUsers.PASSWORD.getValue(), Integer.valueOf(this.view.getTxtPassword().getText()));
+                this.model.update(id, TblUsers.PASSWORD.getValue(), this.view.getTxtPassword().getText());
                 this.alert("Exitoso", "Usuario actualizado!", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ignored) {
                 this.alert("Error", "El usuario no fue encontrado!", JOptionPane.ERROR_MESSAGE);
