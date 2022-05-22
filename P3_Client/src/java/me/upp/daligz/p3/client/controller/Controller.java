@@ -19,6 +19,7 @@ public class Controller {
     
     private void registerActions() {
         this.create();
+        this.read();
     }
     
     private void create() {
