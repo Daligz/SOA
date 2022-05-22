@@ -36,6 +36,21 @@ public class Controller {
         });
     }
     
+    private void read() {
+        this.view.getBtnRead().addActionListener((e) -> {
+            final String id = JOptionPane.showInputDialog("Ingrese el id del usuario");
+            try {
+                final User user = this.model.read(Integer.parseInt(id));
+                this.view.getTxtName().setText(user.getName());
+                this.view.getTxtUser().setText(user.getUser());
+                this.view.getTxtPassword().setText(String.valueOf(user.getPassword()));
+                this.alert("Exitoso", "El usuario con el id " + user.getId() + " fue encontrado!", JOptionPane.INFORMATION_MESSAGE);
+            } catch (NumberFormatException ignored) {
+                this.alert("Error", "Usuario no valido!", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+    }
+    
     private void alert(final String title, final String message, final int jOptionPaneIcon) {
         JOptionPane.showMessageDialog(null, message, title, jOptionPaneIcon);
     }
