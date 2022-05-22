@@ -22,6 +22,7 @@ public class Controller {
         this.create();
         this.read();
         this.update();
+        this.delete();
     }
     
     private void create() {
@@ -67,6 +68,18 @@ public class Controller {
                 // Need change model data type :(
 //                this.model.update(id, TblUsers.PASSWORD.getValue(), Integer.valueOf(this.view.getTxtPassword().getText()));
             } catch (Exception ignored) { }
+        });
+    }
+    
+    private void delete() {
+        this.view.getBtnDelete().addActionListener((e) -> {
+            try {
+                final int id = Integer.valueOf(JOptionPane.showInputDialog("Ingrese el id del usuario"));
+                this.model.delete(id);
+                this.alert("Exitoso", "El usuario con el id " + id + " fue eliminado!", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ignored) {
+                this.alert("Error", "Usuario no encontrado", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
     
