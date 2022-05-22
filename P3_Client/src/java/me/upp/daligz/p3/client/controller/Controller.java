@@ -67,7 +67,10 @@ public class Controller {
                 this.model.update(id, TblUsers.USER.getValue(), this.view.getTxtUser().getText());
                 // Need change model data type :(
 //                this.model.update(id, TblUsers.PASSWORD.getValue(), Integer.valueOf(this.view.getTxtPassword().getText()));
-            } catch (Exception ignored) { }
+                this.alert("Exitoso", "Usuario actualizado!", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ignored) {
+                this.alert("Error", "El usuario no fue encontrado!", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
     
