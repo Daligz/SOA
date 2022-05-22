@@ -11,7 +11,6 @@ import me.upp.daligz.p3.client.view.View;
 public class Client {
     
         public static void main(final String args[]) {
-            
         try {
             for (final UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
