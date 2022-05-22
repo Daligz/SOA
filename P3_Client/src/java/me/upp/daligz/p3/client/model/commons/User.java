@@ -1,4 +1,4 @@
-package me.upp.daligz.p3.backend.model.commons;
+package me.upp.daligz.p3.client.model.commons;
 
 public class User {
     

@@ -1,16 +1,16 @@
-package me.upp.daligz.p3.client.controller;
+package me.upp.daligz.p3.client.model;
 
 import com.google.gson.Gson;
 import me.upp.daligz.p3.backend.model.WSDatabase;
 import me.upp.daligz.p3.backend.model.WSDatabase_Service;
-import me.upp.daligz.p3.backend.model.commons.User;
+import me.upp.daligz.p3.client.model.commons.User;
 
-public class Controller implements IData<User>{
+public class Model implements IData<User>{
     
     private final WSDatabase wsd;
     private static final Gson GSON = new Gson();
 
-    public Controller() {
+    public Model() {
         this.wsd = new WSDatabase_Service().getWSDatabasePort();
     }
     

@@ -1,4 +1,4 @@
-package me.upp.daligz.p3.client.controller;
+package me.upp.daligz.p3.client.model;
 
 public interface IData<T> {
     void create(final String name, final String user, final int password);
