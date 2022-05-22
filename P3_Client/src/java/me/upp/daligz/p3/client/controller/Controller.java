@@ -23,6 +23,7 @@ public class Controller {
         this.read();
         this.update();
         this.delete();
+        this.cancel();
     }
     
     private void create() {
@@ -83,6 +84,12 @@ public class Controller {
             } catch (Exception ignored) {
                 this.alert("Error", "Usuario no encontrado", JOptionPane.ERROR_MESSAGE);
             }
+        });
+    }
+    
+    private void cancel() {
+        this.view.getBtnCancel().addActionListener((e) -> {
+            this.clear();
         });
     }
     
