@@ -23,8 +23,8 @@ public class Client {
         }
 
         EventQueue.invokeLater(() -> {
-            final View view = new View();
             final Model model = new Model();
+            final View view = new View();
             final Controller controller = new Controller(model, view);
             
             view.setVisible(true);
