@@ -1,12 +1,20 @@
 package me.upp.library.intelligod;
 
 import com.google.gson.Gson;
+import com.zaxxer.hikari.HikariConfig;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 public final class IntelliGod {
 
     private static final Gson GSON = new Gson();
+
+    public static IntelliGod init(final HikariConfig hikariConfig) {
+        Model.getInstance().setHikariConfig(hikariConfig);
+        return new IntelliGod();
+    }
+
+    private IntelliGod() { }
 
     public String create(final String name, final String user, int password) {
         Model.getInstance().create(name, user, password);
