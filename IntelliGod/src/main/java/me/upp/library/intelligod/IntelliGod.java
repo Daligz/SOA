@@ -16,9 +16,8 @@ public final class IntelliGod {
 
     private IntelliGod() { }
 
-    public String create(final String name, final String user, int password) {
+    public void create(final String name, final String user, int password) {
         Model.getInstance().create(name, user, password);
-        return "OK!";
     }
 
     public String read(final int id) {
@@ -35,13 +34,11 @@ public final class IntelliGod {
         while(true) if (atomicResponse.get() != null) return atomicResponse.get();
     }
 
-    public String update(final int id, final String value, final String valueToUpdate) {
+    public void update(final int id, final String value, final String valueToUpdate) {
         Model.getInstance().update(id, value, valueToUpdate);
-        return "OK!";
     }
 
-    public String delete(final int id) {
+    public void delete(final int id) {
         Model.getInstance().delete(id);
-        return "OK!";
     }
 }
