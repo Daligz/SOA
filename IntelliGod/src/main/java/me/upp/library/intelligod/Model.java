@@ -18,14 +18,12 @@ public class Model implements IData<User> {
     
     private static Model instance;
 
+    private HikariConfig hikariConfig = null;
+
     private Model() {
-        final HikariConfig hc = new SimpleSourceBuilder()
-                .setUlr("jdbc:mysql://localhost:3306/bddatos?useSSL=false")
-                .setUser("root")
-                .setPassword("")
-                .build();
-        hc.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        HIKARI_POOL = new HikariPool(hc);
+        if (this.hikariConfig == null) return;
+        this.hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        HIKARI_POOL = new HikariPool(this.hikariConfig);
     }
 
     public static Model getInstance() {
@@ -84,5 +82,9 @@ public class Model implements IData<User> {
                 .where(TblUsers.ID.getValue(), "=", id)
                 .getQuery();
         HIKARI_POOL.execute(conn -> conn.prepareStatement(query).execute());
+    }
+
+    public void setHikariConfig(final HikariConfig hikariConfig) {
+        this.hikariConfig = hikariConfig;
     }
 }
