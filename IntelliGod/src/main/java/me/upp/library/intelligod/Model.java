@@ -18,13 +18,7 @@ public class Model implements IData<User> {
     
     private static Model instance;
 
-    private HikariConfig hikariConfig = null;
-
-    private Model() {
-        if (this.hikariConfig == null) return;
-        this.hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        HIKARI_POOL = new HikariPool(this.hikariConfig);
-    }
+    private Model() { }
 
     public static Model getInstance() {
         if (instance == null) instance = new Model();
@@ -85,6 +79,7 @@ public class Model implements IData<User> {
     }
 
     public void setHikariConfig(final HikariConfig hikariConfig) {
-        this.hikariConfig = hikariConfig;
+        hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        HIKARI_POOL = new HikariPool(hikariConfig);
     }
 }
