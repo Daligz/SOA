@@ -36,5 +36,9 @@ public class Server {
             );
             return "OK!";
         });
+        Spark.get("/delete/:id", (request, response) -> {
+            ROOT.delete(Integer.valueOf(request.params(":id")));
+            return "OK!";
+        });
     }
 }
