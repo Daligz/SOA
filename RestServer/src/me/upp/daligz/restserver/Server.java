@@ -25,5 +25,8 @@ public class Server {
             );
             return "OK!";
         });
+        Spark.get("/read/:id", (request, response) -> {
+            return ROOT.read(Integer.valueOf(request.params(":id")));
+        });
     }
 }
