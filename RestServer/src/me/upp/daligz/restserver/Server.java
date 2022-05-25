@@ -28,5 +28,13 @@ public class Server {
         Spark.get("/read/:id", (request, response) -> {
             return ROOT.read(Integer.valueOf(request.params(":id")));
         });
+        Spark.get("/update/:id/:value/:valueToUpdate", (request, response) -> {
+            ROOT.update(
+                    Integer.valueOf(request.params(":id")),
+                    request.params(":value"),
+                    request.params("valueToUpdate")
+            );
+            return "OK!";
+        });
     }
 }
