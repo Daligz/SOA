@@ -1,10 +1,43 @@
 package me.upp.daligz.restclient.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 public class View extends javax.swing.JFrame {
 
     public View() {
         initComponents();
     }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public JButton getBtnCreate() {
+        return btnCreate;
+    }
+
+    public JButton getBtnRead() {
+        return btnRead;
+    }
+
+    public JButton getBtnUpdate() {
+        return btnUpdate;
+    }
+
+    public JTextField getTxtName() {
+        return txtName;
+    }
+
+    public JTextField getTxtPassword() {
+        return txtPassword;
+    }
+
+    public JTextField getTxtUser() {
+        return txtUser;
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
