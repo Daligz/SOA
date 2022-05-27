@@ -3,6 +3,8 @@ package me.upp.daligz.restclient;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import me.upp.daligz.restclient.controller.Controller;
+import me.upp.daligz.restclient.model.Model;
 import me.upp.daligz.restclient.view.View;
 
 public class Client {
@@ -20,7 +22,10 @@ public class Client {
         }
 
         java.awt.EventQueue.invokeLater(() -> {
-            new View().setVisible(true);
+            final Model model = new Model();
+            final View view = new View();
+            final Controller controller = new Controller(view, model);
+            view.setVisible(true);
         });
     }
 }

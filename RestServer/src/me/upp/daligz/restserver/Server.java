@@ -17,6 +17,7 @@ public class Server {
     //http://localhost:6969/create/yoana/yobiz/123
     public static void main(final String[] args) {
         Spark.port(6969);
+        Spark.get("/", (request, response) -> "Waiting requests! :)");
         Spark.get("/create/:name/:user/:password", (request, response) -> {
             ROOT.create(
                     request.params(":name"),
