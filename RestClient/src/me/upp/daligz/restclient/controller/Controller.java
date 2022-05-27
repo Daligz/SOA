@@ -3,6 +3,7 @@ package me.upp.daligz.restclient.controller;
 import javax.swing.JOptionPane;
 import me.upp.daligz.restclient.model.Model;
 import me.upp.daligz.restclient.view.View;
+import me.upp.library.intelligod.commons.User;
 import me.upp.library.intelligod.tables.TblUsers;
 
 public class Controller {
@@ -36,7 +37,10 @@ public class Controller {
     private void read() {
         this.view.getBtnRead().addActionListener((e) -> {
             final int id = Integer.valueOf(JOptionPane.showInputDialog("Ingrese el id del usuario"));
-            this.model.read(id);
+            final User user = this.model.read(id);
+            this.view.getTxtName().setText(user.getName());
+            this.view.getTxtUser().setText(user.getUser());
+            this.view.getTxtPassword().setText(String.valueOf(user.getPassword()));
         });
     }
     

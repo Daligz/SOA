@@ -8,13 +8,17 @@ import java.net.URL;
 
 public class Request {
 
-    public static <T> Object get(final String url, final T t) {
+    public static <T> Object get(final String url, final Type typeOf) {
         try {
             final InputStreamReader inputStreamReader = new InputStreamReader(new URL(url).openStream());
-            return new Gson().fromJson(inputStreamReader, (Type) t.getClass());
+            return new Gson().fromJson(inputStreamReader, typeOf);
         } catch (final Exception ex) {
             ex.printStackTrace();
         }
         return null;
+    }
+
+    public static void post(final String url) {
+
     }
 }
