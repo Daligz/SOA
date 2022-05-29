@@ -21,7 +21,7 @@ public class Model {
     }
     
     public void update(final User user) {
-        this.client.edit_JSON(user, String.valueOf(user.getId()));
+        this.client.edit_JSON(GSON.toJson(user), String.valueOf(user.getId()));
     }
     
     public void delete(final String id) {

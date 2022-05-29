@@ -32,6 +32,7 @@ public class Controller {
                     this.view.getTxtUser().getText(), 
                     Integer.valueOf(this.view.getTxtPassword().getText())
             ));
+            this.alert("Usuario guardado", "El usuario se guardo correctamente!", JOptionPane.INFORMATION_MESSAGE);
         });
     }
     
@@ -42,6 +43,7 @@ public class Controller {
             this.view.getTxtName().setText(user.getNombre());
             this.view.getTxtUser().setText(user.getUsuario());
             this.view.getTxtPassword().setText(String.valueOf(user.getPsw()));
+            this.alert("Usuario encontrado", "Se encontro el usuario correctamente!", JOptionPane.INFORMATION_MESSAGE);
         });
     }
     
@@ -54,6 +56,7 @@ public class Controller {
                     this.view.getTxtUser().getText(), 
                     Integer.valueOf(this.view.getTxtPassword().getText())
             ));
+            this.alert("Usuario actualizado", "Se actualizo el usuario correctamente!", JOptionPane.INFORMATION_MESSAGE);
         });
     }
     
@@ -61,6 +64,7 @@ public class Controller {
         this.view.getBtnDelete().addActionListener((e) -> {
             final String id = JOptionPane.showInputDialog("Ingrese el id del usuario");
             this.model.delete(id);
+            this.alert("Usuario eliminado", "Se elimino el usuario correctamente!", JOptionPane.INFORMATION_MESSAGE);
         });
     }
     
@@ -70,5 +74,9 @@ public class Controller {
             this.view.getTxtUser().setText("");
             this.view.getTxtPassword().setText("");
         });
+    }
+    
+    private void alert(final String title, final String message, final int jOptionPaneIcon) {
+        JOptionPane.showMessageDialog(null, message, title, jOptionPaneIcon);
     }
 }
