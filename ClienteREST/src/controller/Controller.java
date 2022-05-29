@@ -22,6 +22,7 @@ public class Controller {
         this.read();
         this.update();
         this.delete();
+        this.cancel();
     }
     
     private void create() {
@@ -60,6 +61,14 @@ public class Controller {
         this.view.getBtnDelete().addActionListener((e) -> {
             final String id = JOptionPane.showInputDialog("Ingrese el id del usuario");
             this.model.delete(id);
+        });
+    }
+    
+    private void cancel() {
+        this.view.getBtnCancel().addActionListener((e) -> {
+            this.view.getTxtName().setText("");
+            this.view.getTxtUser().setText("");
+            this.view.getTxtPassword().setText("");
         });
     }
 }
