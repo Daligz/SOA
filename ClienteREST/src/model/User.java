@@ -6,9 +6,15 @@ public class User {
     private String nombre;
     private String usuario;
     private int psw;
-
+    
     public User(int id, String nombre, String usuario, int psw) {
         this.id = id;
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.psw = psw;
+    }
+    
+    public User(String nombre, String usuario, int psw) {
         this.nombre = nombre;
         this.usuario = usuario;
         this.psw = psw;
