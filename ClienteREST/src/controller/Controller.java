@@ -26,7 +26,7 @@ public class Controller {
     }
     
     private void create() {
-        this.view.getBtnRead().addActionListener((e) -> {
+        this.view.getBtnCreate().addActionListener((e) -> {
             this.model.create(new User(
                     this.view.getTxtName().getText(), 
                     this.view.getTxtUser().getText(), 
