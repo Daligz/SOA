@@ -1,13 +1,14 @@
 package controller;
 
-import pkgRest.NewJerseyClient;
+import model.Model;
+
 
 public class Controller {
 
-    private final NewJerseyClient client;
+    private final Model model;
     
-    public Controller(final NewJerseyClient client) {
-        this.client = client;
+    public Controller(final Model model) {
+        this.model = model;
         this.register();
     }
     
