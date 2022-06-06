@@ -8,7 +8,6 @@ public class Model {
     private static final String URL = "http://localhost:6969";
     
     public void create(final String name, final String user, int password) {
-        System.out.println(String.format(URL.concat("/create/%s/%s/%s"), name, user, password));
         Request.get(String.format(URL.concat("/create/%s/%s/%s"), name, user, password), String.class);
     }
 
