@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.util.concurrent.CompletableFuture;
 import me.upp.daligz.p3.backend.model.commons.User;
 import me.upp.daligz.p3.backend.model.tables.TblUsers;
-import me.upp.daligz.p3.backend.modelo.SimpleSourceBuilder;
 import net.royalmind.library.lightquery.HikariPool;
+import net.royalmind.library.lightquery.SimpleSourceBuilder;
 import net.royalmind.library.lightquery.queries.LDelete;
 import net.royalmind.library.lightquery.queries.LInsert;
 import net.royalmind.library.lightquery.queries.LSelect;
@@ -20,7 +20,7 @@ public class Model implements IData<User> {
 
     private Model() {
         final HikariConfig hc = new SimpleSourceBuilder()
-                .setUlr("jdbc:mysql://localhost:3306/bddatos?useSSL=false")
+                .setUrl("jdbc:mysql://localhost:3306/bddatos?useSSL=false")
                 .setUser("root")
                 .setPassword("")
                 .build();
