@@ -1,13 +1,13 @@
 package me.upp.library.intelligod;
 
-import me.upp.daligz.p3.backend.modelo.SimpleSourceBuilder;
 import me.upp.library.intelligod.tables.TblUsers;
+import net.royalmind.library.lightquery.SimpleSourceBuilder;
 
 public class ExampleClass {
 
     private static final IntelliGod ROOT = IntelliGod.init(
             new SimpleSourceBuilder()
-                    .setUlr("jdbc:mysql://localhost:3306/bddatos?useSSL=false")
+                    .setUrl("jdbc:mysql://localhost:3306/bddatos?useSSL=false")
                     .setUser("root")
                     .setPassword("")
                     .build()
