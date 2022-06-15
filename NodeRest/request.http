@@ -1,0 +1,25 @@
+###
+GET http://localhost:6969/api HTTP/1.1
+
+###
+POST http://localhost:6969/api HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Stephen Covey",
+    "usuario": "Covey78P",
+    "psw": 7785
+}
+
+###
+DELETE http://localhost:6969/api/29 HTTP/1.1
+
+###
+PUT http://localhost:6969/api/5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Stephen Hawking",
+    "usuario": "Hawking78A",
+    "psw": 3457887
+}
